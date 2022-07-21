@@ -1,5 +1,4 @@
-#Topic Models 1: mit allen Wörtern
-setwd("C:/Users/ellah/OneDrive/Dokumente/Studium/Keusch_Hiwi/Hiwi/Reddit_Projekt")
+#Topic Models 1: mit allen W?rtern
 
 # 1. Load Packages & Data
 
@@ -11,10 +10,10 @@ library(tidytext)
 library(readxl)
 
 
-daddit_2019_excel <- read_excel("C:/Users/ellah/OneDrive/Dokumente/Studium/Keusch_Hiwi/Hiwi/Reddit_Projekt/Daten/subm_daddit_2019.xlsx")
-daddit_2020_excel <- read_excel("C:/Users/ellah/OneDrive/Dokumente/Studium/Keusch_Hiwi/Hiwi/Reddit_Projekt/Daten/subm_daddit_2020.xlsx")
-mommit_2019_excel <- read_excel("C:/Users/ellah/OneDrive/Dokumente/Studium/Keusch_Hiwi/Hiwi/Reddit_Projekt/Daten/subm_mommit_2019.xlsx")
-mommit_2020_excel <- read_excel("C:/Users/ellah/OneDrive/Dokumente/Studium/Keusch_Hiwi/Hiwi/Reddit_Projekt/Daten/subm_mommit_2020.xlsx")
+daddit_2019_excel <- read.csv("subm_daddit_2019.csv")
+daddit_2020_excel <- read.csv("subm_daddit_2020.csv")
+mommit_2019_excel <- read.csv("subm_mommit_2019.csv")
+mommit_2020_excel <- read.csv("subm_mommit_2020.csv")
 
 # 2. Data preparation
 
@@ -53,7 +52,7 @@ daddit_2019$selftext <- gsub("\\s(https:\\S+)", "", daddit_2019$selftext) # remo
 daddit_2019$selftext <- gsub(pattern = " ?(f|ht)tp(s?)://(.*)[.][a-z]+",replacement = "", daddit_2019$selftext)
 daddit_2019$selftext <- gsub("^http.*", "", daddit_2019$selftext) # removes all URLs
 daddit_2019$selftext <- gsub("&amp;", "and", daddit_2019$selftext) ## removes ampersand (&)
-daddit_2019$selftext <- gsub("â", "", daddit_2019$selftext) # this needs to be removed due to an error in the data
+daddit_2019$selftext <- gsub("?", "", daddit_2019$selftext) # this needs to be removed due to an error in the data
 daddit_2019$selftext <- gsub("[[:digit:]]", "", daddit_2019$selftext) #remove digits
 daddit_2019$selftext <- gsub("[[:punct:]]", "", daddit_2019$selftext) #remove punctuations
 daddit_2019$selftext <- gsub("@\\w+", "", daddit_2019$selftext)
@@ -62,7 +61,7 @@ daddit_2020$selftext <- gsub("\\s(https:\\S+)", "", daddit_2020$selftext)
 daddit_2020$selftext <- gsub(pattern = " ?(f|ht)tp(s?)://(.*)[.][a-z]+",replacement = "", daddit_2020$selftext)
 daddit_2020$selftext <- gsub("^http.*", "", daddit_2020$selftext) 
 daddit_2020$selftext <- gsub("&amp;", "and", daddit_2020$selftext) 
-daddit_2020$selftext <- gsub("â", "", daddit_2020$selftext)
+daddit_2020$selftext <- gsub("?", "", daddit_2020$selftext)
 daddit_2020$selftext <- gsub("[[:digit:]]", "", daddit_2020$selftext)
 daddit_2020$selftext <- gsub("[[:punct:]]", "", daddit_2020$selftext)
 daddit_2020$selftext <- gsub("@\\w+", "", daddit_2020$selftext)
@@ -71,7 +70,7 @@ mommit_2019$selftext <- gsub("\\s(https:\\S+)", "", mommit_2019$selftext)
 mommit_2019$selftext <- gsub(pattern = " ?(f|ht)tp(s?)://(.*)[.][a-z]+",replacement = "", mommit_2019$selftext)
 mommit_2019$selftext <- gsub("^http.*", "", mommit_2019$selftext)
 mommit_2019$selftext <- gsub("&amp;", "and", mommit_2019$selftext) 
-mommit_2019$selftext <- gsub("â", "", mommit_2019$selftext)
+mommit_2019$selftext <- gsub("?", "", mommit_2019$selftext)
 mommit_2019$selftext <- gsub("[[:digit:]]", "", mommit_2019$selftext)
 mommit_2019$selftext <- gsub("[[:punct:]]", "", mommit_2019$selftext)
 mommit_2019$selftext <- gsub("@\\w+", "", mommit_2019$selftext)
@@ -80,7 +79,7 @@ mommit_2020$selftext <- gsub("\\s(https:\\S+)", "", mommit_2020$selftext)
 mommit_2020$selftext <- gsub(pattern = " ?(f|ht)tp(s?)://(.*)[.][a-z]+",replacement = "", mommit_2020$selftext)
 mommit_2020$selftext <- gsub("^http.*", "", mommit_2020$selftext) 
 mommit_2020$selftext <- gsub("&amp;", "and", mommit_2020$selftext) 
-mommit_2020$selftext <- gsub("â", "", mommit_2020$selftext)
+mommit_2020$selftext <- gsub("?", "", mommit_2020$selftext)
 mommit_2020$selftext <- gsub("[[:digit:]]", "", mommit_2020$selftext)
 mommit_2020$selftext <- gsub("[[:punct:]]", "", mommit_2020$selftext)
 mommit_2020$selftext <- gsub("@\\w+", "", mommit_2020$selftext)
@@ -121,7 +120,7 @@ tidy_mommit_2020 <-  tidy_mommit_2020 %>%
 # 2.5 Remove remaining stopwords (with the help of self-created stopwords list)
 
 library(readxl)
-stop_words_eigen <- read_excel("C:/Users/ellah/OneDrive/Dokumente/Studium/Semester 5/Emprisches Fopra/Reddit_Projekt/stop_words_eigen.xlsx")
+stop_words_eigen <- read_excel("stop_words_eigen.xlsx")
 
 tidy_daddit_2019 <- tidy_daddit_2019 %>%
   anti_join(stop_words_eigen)
