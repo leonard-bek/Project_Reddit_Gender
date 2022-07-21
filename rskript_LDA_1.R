@@ -10,17 +10,22 @@ library(tidytext)
 library(readxl)
 
 
-daddit_2019_excel <- read.csv("subm_daddit_2019.csv")
-daddit_2020_excel <- read.csv("subm_daddit_2020.csv")
-mommit_2019_excel <- read.csv("subm_mommit_2019.csv")
-mommit_2020_excel <- read.csv("subm_mommit_2020.csv")
+daddit_2019 <- read.csv("subm_daddit_2019.csv")
+daddit_2020 <- read.csv("subm_daddit_2020.csv")
+mommit_2019 <- read.csv("subm_mommit_2019.csv")
+mommit_2020 <- read.csv("subm_mommit_2020.csv")
 
 # 2. Data preparation
 
-daddit_2019 <- as_tibble(daddit_2019_excel)
-daddit_2020 <- as_tibble(daddit_2020_excel)
-mommit_2019 <- as_tibble(mommit_2019_excel)
-mommit_2020 <- as_tibble(mommit_2020_excel)
+daddit_2019 <- as_tibble(daddit_2019)
+daddit_2020 <- as_tibble(daddit_2020)
+mommit_2019 <- as_tibble(mommit_2019)
+mommit_2020 <- as_tibble(mommit_2020)
+
+length(unique(daddit_2019$author))
+length(unique(daddit_2020$author))
+length(unique(mommit_2019$author))
+length(unique(mommit_2020$author))
 
 # 2.1 Select and filter relevant variables
 daddit_2019 <- daddit_2019 %>% 
