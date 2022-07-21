@@ -1,4 +1,4 @@
-#Topic Models 1: mit allen W?rtern
+#Topic Models 1: with all words
 
 # 1. Load Packages & Data
 
